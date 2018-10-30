@@ -22,11 +22,14 @@ def get_birthday():
 
 
 def calculate_day_diff(user_date, today_date):
-    datedelta = user_date - today_date
-    return datedelta
+    user_date_thisyear = datetime.date(today_date.year, user_date.month, user_date.day)
+
+    datedelta = user_date_thisyear - today_date
+    return datedelta.days
 
 
 def print_day_diff_message(birthday):
+    print()
     if birthday > 0:
         print('Your birthday is in {} days'.format(birthday))
     elif birthday < 0:
@@ -37,10 +40,16 @@ def print_day_diff_message(birthday):
 
 def main():
     print_header()
+
     user_birthday = get_birthday()
     today = datetime.date.today()
+    
     day_diff = calculate_day_diff(user_birthday, today)
+    
     print_day_diff_message(day_diff)
+
+    print()
+    print('Thank you for using the Birthday App, now exiting!')
 
 
 main()
