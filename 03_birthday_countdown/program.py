@@ -31,9 +31,9 @@ def calculate_day_diff(user_date, today_date):
 def print_day_diff_message(birthday):
     print()
     if birthday > 0:
-        print('Your birthday is in {} days'.format(birthday))
+        print('Your birthday is in {} days.'.format(birthday))
     elif birthday < 0:
-        print('Your birthday was {} days back'.format(birthday))
+        print('Your birthday was {} days back.'.format(-birthday))
     else:
         print('Congrats, Happy Birthday!')
 
@@ -43,7 +43,7 @@ def main():
 
     user_birthday = get_birthday()
     today = datetime.date.today()
-    
+
     day_diff = calculate_day_diff(user_birthday, today)
     
     print_day_diff_message(day_diff)
