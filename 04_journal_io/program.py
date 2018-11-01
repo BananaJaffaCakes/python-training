@@ -35,6 +35,7 @@ def list_entries(entries):
         print('[{}] {}'.format(index+1, entry))
     print('<journal entries end>')
 
+
 def add_entries(entries):
     new_entry = input('Journal entry, <enter> to commit: ')
     updated_entries = entries.append(new_entry)
