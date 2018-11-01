@@ -1,7 +1,6 @@
 def main():
     print_header()
     run_event_loop()
-    print('Exiting journal...')
 
 
 def print_header():
@@ -12,7 +11,7 @@ def print_header():
 
 def run_event_loop():
     
-    j_entries = []
+    j_entries = [] # list()
     cmd = None
     
     while cmd != 'x':
@@ -26,12 +25,14 @@ def run_event_loop():
         elif cmd != 'x':
             print("Invalid option '{}'".format(cmd))
 
+    print('Exiting journal...')
+
 
 def list_entries(entries):
     reversed_entries = reversed(entries)
     print('<journal entries start>')
     for (index, entry) in enumerate(reversed_entries):
-        print('[{}] {}'.format(index, entry))
+        print('[{}] {}'.format(index+1, entry))
     print('<journal entries end>')
 
 def add_entries(entries):
@@ -39,7 +40,6 @@ def add_entries(entries):
     updated_entries = entries.append(new_entry)
 
     return updated_entries
-
 
 
 main()
