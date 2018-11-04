@@ -1,3 +1,5 @@
+import journal
+
 def main():
     print_header()
     run_event_loop()
