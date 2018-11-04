@@ -28,6 +28,8 @@ def run_event_loop():
         elif cmd != 'x':
             print("Invalid option '{}'".format(cmd))
 
+    print('Saving journal...')
+    journal.save(j_entries)
     print('Exiting journal...')
 
 
