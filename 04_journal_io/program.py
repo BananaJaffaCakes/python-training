@@ -13,7 +13,8 @@ def print_header():
 
 def run_event_loop():
     
-    j_entries = [] # list()
+    j_name = 'Deep Space'
+    j_entries = journal.load() #[] # list()
     cmd = None
     
     while cmd != 'x':

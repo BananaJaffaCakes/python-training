@@ -1,8 +1,8 @@
-def load_journal():
+def load():
     pass
 
 
-def save_journal():
+def save():
     pass
 
 
