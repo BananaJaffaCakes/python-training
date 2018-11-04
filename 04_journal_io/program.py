@@ -14,7 +14,7 @@ def print_header():
 def run_event_loop():
     
     j_name = 'Deep Space'
-    j_entries = journal.load(j_name) #[] # list()
+    j_data = journal.load(j_name) #[] # list()
     cmd = None
     
     while cmd != 'x':
@@ -22,28 +22,28 @@ def run_event_loop():
         cmd = cmd.lower().strip()
 
         if cmd == 'l':
-            list_entries(j_entries)
+            list_entries(j_data)
         elif cmd == 'a':
-            add_entries(j_entries)
+            add_entries(j_data)
         elif cmd != 'x':
             print("Invalid option '{}'".format(cmd))
 
     print('Saving journal...')
-    journal.save(j_entries)
+    journal.save(j_data)
     print('Exiting journal...')
 
 
-def list_entries(entries):
-    reversed_entries = reversed(entries)
+def list_entries(journal):
+    reversed_entries = reversed(journal)
     print('<journal entries start>')
     for (index, entry) in enumerate(reversed_entries):
         print('[{}] {}'.format(index+1, entry))
     print('<journal entries end>')
 
 
-def add_entries(entries):
+def add_entries(journal):
     new_entry = input('Journal entry, <enter> to commit: ')
-    journal.add_entry(entries, new_entry)
+    journal.add_entry(journal, new_entry)
 
 
 main()
