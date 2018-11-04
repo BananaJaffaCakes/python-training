@@ -9,7 +9,8 @@ def save(journal):
     pass
 
 
-def add_entry():
-    pass
+def add_entry(journal, new_entry):
+    updated_journal = journal.append(new_entry)
+    return updated_journal
 
 

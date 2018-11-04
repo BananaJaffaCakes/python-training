@@ -43,9 +43,7 @@ def list_entries(entries):
 
 def add_entries(entries):
     new_entry = input('Journal entry, <enter> to commit: ')
-    updated_entries = entries.append(new_entry)
-
-    return updated_entries
+    journal.add_entry(entries, new_entry)
 
 
 main()
