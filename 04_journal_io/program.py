@@ -33,17 +33,17 @@ def run_event_loop():
     print('Exiting journal...')
 
 
-def list_entries(journal):
-    reversed_entries = reversed(journal)
+def list_entries(j_entries):
+    reversed_entries = reversed(j_entries)
     print('<journal entries start>')
     for (index, entry) in enumerate(reversed_entries):
         print('[{}] {}'.format(index+1, entry))
     print('<journal entries end>')
 
 
-def add_entries(journal):
+def add_entries(j_entries):
     new_entry = input('Journal entry, <enter> to commit: ')
-    journal.add_entry(journal, new_entry)
+    journal.add_entry(j_entries, new_entry)
 
 
 main()
