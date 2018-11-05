@@ -29,7 +29,7 @@ def run_event_loop():
             print("Invalid option '{}'".format(cmd))
 
     print('Saving journal...')
-    journal.save(j_data)
+    journal.save(j_data, j_name)
     print('Exiting journal...')
 
 

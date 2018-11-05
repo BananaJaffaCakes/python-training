@@ -7,11 +7,15 @@ def load(name):
 
 
 def save(journal, name):
+    print('Saving journal...')
     #create absolute path to new file
-    jrl_path = os.path.abspath(os.path.join('./jrl_files/' + name + '.jrl'))
+    jrl_path = os.path.abspath(
+        os.path.join('./jrl_files/' + name + '.jrl'))
     print('File save location: {}'.format(jrl_path))
     #take list and write each item to new line
-   
+    with open(jrl_path, 'w') as j_save:
+        for entry in journal:
+            j_save.write(entry + '\n')   
 
 
 def add_entry(journal, new_entry):
