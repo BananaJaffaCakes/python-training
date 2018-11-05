@@ -13,7 +13,7 @@ def print_header():
 
 def run_event_loop():
     
-    j_name = 'Deep Space'
+    j_name = 'Space'
     j_data = journal.load(j_name) #[] # list()
     cmd = None
     
@@ -28,7 +28,6 @@ def run_event_loop():
         elif cmd != 'x':
             print("Invalid option '{}'".format(cmd))
 
-    print('Saving journal...')
     journal.save(j_data, j_name)
     print('Exiting journal...')
 
