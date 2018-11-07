@@ -15,9 +15,9 @@ def run_event_loop():
     
     j_name = 'Space'
     j_data = journal.load(j_name) #[] # list()
-    cmd = None
+    cmd = 'NoCommand'
     
-    while cmd != 'x':
+    while cmd != 'x' and cmd:
         cmd = input('Journal Options, [L]ist entries, [A]dd entries, E[x]it journal: ')
         cmd = cmd.lower().strip()
 
@@ -25,7 +25,7 @@ def run_event_loop():
             list_entries(j_data)
         elif cmd == 'a':
             add_entries(j_data)
-        elif cmd != 'x':
+        elif cmd != 'x' and cmd:
             print("Invalid option '{}'".format(cmd))
 
     journal.save(j_data, j_name)
