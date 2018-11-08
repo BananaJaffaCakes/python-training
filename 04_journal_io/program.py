@@ -44,5 +44,6 @@ def add_entries(j_entries):
     new_entry = input('Journal entry, <enter> to commit: ')
     journal.add_entry(j_entries, new_entry)
 
+if(__name__ == '__main__'):
+    main()
 
-main()
