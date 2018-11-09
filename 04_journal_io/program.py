@@ -18,13 +18,15 @@ def run_event_loop():
     cmd = 'NoCommand'
     
     while cmd != 'x' and cmd:
-        cmd = input('Journal Options, [L]ist entries, [A]dd entries, E[x]it journal: ')
+        cmd = input('Journal Options, [L]ist entries, [A]dd entry, [D]elete entry, E[x]it journal: ')
         cmd = cmd.lower().strip()
 
         if cmd == 'l':
             list_entries(j_data)
         elif cmd == 'a':
             add_entries(j_data)
+        elif cmd == 'd':
+            delete_entries(j_data)            
         elif cmd != 'x' and cmd:
             print("Invalid option '{}'".format(cmd))
 
@@ -43,6 +45,12 @@ def list_entries(j_entries):
 def add_entries(j_entries):
     new_entry = input('Journal entry, <enter> to commit: ')
     journal.add_entry(j_entries, new_entry)
+
+
+def delete_entries(j_entries):
+    entry_position = input('Entry number to delete: ')
+    journal.delete_entry(j_entries, entry_position)
+
 
 if(__name__ == '__main__'):
     main()
