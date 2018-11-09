@@ -48,7 +48,7 @@ def add_entries(j_entries):
 
 
 def delete_entries(j_entries):
-    entry_position = input('Entry number to delete: ')
+    entry_position = int(input('Entry number to delete: '))
     journal.delete_entry(j_entries, entry_position)
 
 
