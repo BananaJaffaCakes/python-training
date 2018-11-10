@@ -57,7 +57,7 @@ def add_entry(journal, new_entry):
     """
     Updates a journal list by append
 
-    :param journal: Journal list to be have data added too.
+    :param journal: Journal list to have data added too.
     :param new_entry: String containg new entry to be added.
     :return: An updated list with the new entry appended.
     """
@@ -68,19 +68,16 @@ def add_entry(journal, new_entry):
 
 def delete_entry(journal, entry_position):
     """
-    Updates a journal list by append
+    Deletes an entry from the journal
 
-    :param journal: Journal list to be have data added too.
-    :param new_entry: String containg new entry to be added.
-    :return: An updated list with the new entry appended.
+    :param journal: Journal list to have data removed from.
+    :param entry_position: Entry position (reversed).
+    :return: An updated list with the entry deleted.
     """
 
-    reversed_entries = reversed(journal)
-    actual_position = entry_position+1
-
-    del reversed_entries[actual_position]
-    updated_journal = reversed(reversed_entries)
-    
-    return updated_journal
+    entry_index = 0-entry_position
+    removed_entry = journal.pop(entry_index)
+    print('Entry [{}] {}: has been deleted'.format(entry_position, removed_entry))
+    return journal
 
 
