@@ -1,11 +1,19 @@
+import requests
+from bs4 import BeautifulSoup
+import collections
+
+t_weather_data = collections.namedtuple('weatherdata','place, temp, scale, desc')
+
 def main():
     print_header()
+
     location = get_user_location()
-    fetch_http(location)
-        
-    #user input for weather location
-    #create a http request to site with location
-    #scrape page for weather info
+    http_data = fetch_http(location)
+    
+    weather_data = parse_http_soup(http_data)
+    print(weather_data)
+
+    #print weather report
 
 
 def print_header():
@@ -22,8 +30,27 @@ def get_user_location():
 
 def fetch_http(location):
     address = "https://www.wunderground.com/weather/gb/{}".format(location)
-    print('Fetching weather data from {}'.format(address))
+    print('\nFetching weather data from {}'.format(address))
+    r = requests.get(address)
+    print('Page Status Code: {}'.format(r.status_code))
+    print('Page Content Type: {}'.format(r.headers.get('content-type')))
+    print('Current Encoding Setting: {}'.format(r.encoding))
 
+    return r.text
+
+
+def parse_http_soup(http_data):
+    http_soup = BeautifulSoup(http_data, 'html.parser')
+    print(http_soup.title)
+    
+    s_place = http_soup.find(class_='region-content-header').find('h1').get_text()
+    s_temp = http_soup.find(class_='condition-data').find(class_='wu-value wu-value-to').get_text()
+    s_scale = http_soup.find(class_='condition-data').find(class_='wu-label').get_text()
+    s_desc = http_soup.find(class_='condition-icon small-6 medium-12 columns').find('p').get_text()
+
+    #TODO: clean text before adding to tuple
+    weather_data = t_weather_data(place=s_place, temp=s_temp, scale=s_scale, desc=s_desc)
+    return weather_data
 
 if(__name__ == '__main__'):
     main()
