@@ -57,7 +57,10 @@ def parse_http_soup(http_data):
     return weather_data
 
 
-def clean_text(dirty_text):
+def clean_text(dirty_text : str):
+    if dirty_text:
+        return dirty_text
+    
     cleaned_text = dirty_text.strip()
     return cleaned_text
 
