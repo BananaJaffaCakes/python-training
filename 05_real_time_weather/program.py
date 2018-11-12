@@ -58,6 +58,7 @@ def parse_http_soup(http_data):
 
 
 def clean_text(dirty_text : str):
+    #True if text is empty
     if dirty_text:
         return dirty_text
     
