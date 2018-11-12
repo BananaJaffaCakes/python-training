@@ -11,9 +11,9 @@ def main():
     http_data = fetch_http(location)
     
     weather_data = parse_http_soup(http_data)
-    print(weather_data)
+    print_weather_report(weather_data)
 
-    #print weather report
+    print('\nExiting App...')
 
 
 def print_header():
@@ -41,16 +41,30 @@ def fetch_http(location):
 
 def parse_http_soup(http_data):
     http_soup = BeautifulSoup(http_data, 'html.parser')
-    print(http_soup.title)
+    #print(http_soup.title)
     
     s_place = http_soup.find(class_='region-content-header').find('h1').get_text()
     s_temp = http_soup.find(class_='condition-data').find(class_='wu-value wu-value-to').get_text()
     s_scale = http_soup.find(class_='condition-data').find(class_='wu-label').get_text()
     s_desc = http_soup.find(class_='condition-icon small-6 medium-12 columns').find('p').get_text()
 
-    #TODO: clean text before adding to tuple
-    weather_data = t_weather_data(place=s_place, temp=s_temp, scale=s_scale, desc=s_desc)
+    weather_data = t_weather_data(
+    place=clean_text(s_place), 
+    temp=clean_text(s_temp), 
+    scale=clean_text(s_scale), 
+    desc=clean_text(s_desc)
+    )
     return weather_data
+
+
+def clean_text(dirty_text):
+    cleaned_text = dirty_text.strip()
+    return cleaned_text
+
+
+def print_weather_report(nt):
+    print('\nThe weather in {} is {} {} and {}'.format(nt.place, nt.temp, nt.scale, nt.desc))
+
 
 if(__name__ == '__main__'):
     main()
