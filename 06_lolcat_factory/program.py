@@ -15,5 +15,11 @@ def print_header():
 
 
 def create_folder():
-    print(os.path.abspath())
+    new_folder = 'LOLCats'
+    
+    print(os.path.abspath(new_folder))
+
+
+if(__name__ == '__main__'):
+    main()
 
