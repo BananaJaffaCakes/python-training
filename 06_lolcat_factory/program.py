@@ -1,11 +1,13 @@
 import os
 import cat_service
+import subprocess
+import platform
 
 def main():
     print_header()
     storage_folder = create_folder()
     download_data(storage_folder)
-    #save cat to folder
+    open_folder(storage_folder)
 
 
 def print_header():
@@ -33,10 +35,22 @@ def create_folder():
 
 def download_data(dest_folder):
     for i in range(1,9):
-        print('Download {} started...'.format(i))
+        print('Download {} started...'.format(i), end=' ')
         file_name = 'lolcat_{}'.format(i)
         cat_service.get_cats(dest_folder, file_name)
-        print('Download {} completed...'.format(i))
+        print('completed')
+    print('All Downloads complete!')
+
+
+def open_folder(folder):
+    if platform.system() == 'Darwin':
+        subprocess.call(['open', folder])
+    elif platform.system() == 'Windows':
+        subprocess.call(['explorer', folder])
+    elif platform.system() == 'Linux':
+        subprocess.call(['xdg-open', folder])
+    else:
+        print('OS not supported: {}'.format(platform.system()))
 
 
 if(__name__ == '__main__'):
