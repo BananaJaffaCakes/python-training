@@ -1,10 +1,10 @@
 import os
+import cat_service
 
 def main():
     print_header()
     storage_folder = create_folder()
-    
-    #download cats
+    download_data(storage_folder)
     #save cat to folder
 
 
@@ -29,6 +29,13 @@ def create_folder():
         print('Create folder: Already exists, skipping.')
 
     return full_folder_path
+
+
+def download_data(dest_folder):
+    for i in range(1,9):
+        file_name = 'lolcat_{}'.format(i)
+        cat_service.get_cats(dest_folder, file_name)
+
 
 if(__name__ == '__main__'):
     main()
