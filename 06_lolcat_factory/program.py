@@ -2,7 +2,7 @@ import os
 
 def main():
     print_header()
-    create_folder()
+    storage_folder = create_folder()
     
     #download cats
     #save cat to folder
@@ -23,8 +23,12 @@ def create_folder():
     full_folder_path = os.path.join(folder_path, new_folder)
     
     if not os.path.exists(full_folder_path) or not os.path.isdir(full_folder_path):
-        print('Creating new directory at {}'.format(full_folder_path))
+        print('Create folder: Creating at {}'.format(full_folder_path))
         os.mkdir(full_folder_path)
+    else:
+        print('Create folder: Already exists, skipping.')
+
+    return full_folder_path
 
 if(__name__ == '__main__'):
     main()
