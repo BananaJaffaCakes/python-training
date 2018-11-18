@@ -33,8 +33,10 @@ def create_folder():
 
 def download_data(dest_folder):
     for i in range(1,9):
+        print('Download {} started...'.format(i))
         file_name = 'lolcat_{}'.format(i)
         cat_service.get_cats(dest_folder, file_name)
+        print('Download {} completed...'.format(i))
 
 
 if(__name__ == '__main__'):
